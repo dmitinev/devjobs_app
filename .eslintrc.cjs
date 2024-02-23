@@ -21,6 +21,6 @@ module.exports = {
     'prettier/prettier': ['warn', { endOfLine: 'auto' }],
     '@typescript-eslint/no-var-requires': ['warn'],
     'react/react-in-tsx-scope': 'off',
+    'no-empty-pattern': 'off',
   },
 };
-

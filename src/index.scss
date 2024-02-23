@@ -1,16 +1,18 @@
 @import 'the-new-css-reset';
 
 :root {
+  --violet: #5964e0;
+  --light-violet: #939bf4;
+  --dark-violet: #19202d;
+  --very-dark-violet: #121721;
+  --white: #ffffff;
+  --light-gray: #f4f6f8;
+  --gray: #9daec2;
+  --dark-gray: #6e8098;
+  --black: #000000;
+}
+
+body {
   font-family: 'Kumbh sans', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--light-gray);
 }
