@@ -14,5 +14,11 @@
 
 body {
   font-family: 'Kumbh sans', sans-serif;
+}
+
+body[data-theme='dark'] {
+  background-color: var(--very-dark-violet);
+}
+body[data-theme='light'] {
   background-color: var(--light-gray);
 }
