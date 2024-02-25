@@ -1,0 +1,42 @@
+import { ReactNode, createContext, useEffect, useMemo } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
+
+type Theme = 'light' | 'dark';
+
+export interface IThemeContext {
+  theme: Theme;
+  setTheme: (value: Theme) => void;
+}
+
+interface IThemeContextProvider {
+  children: ReactNode;
+}
+
+export const ThemeContext = createContext<IThemeContext>({
+  theme: 'light',
+  setTheme: () => {},
+});
+
+export const ThemeContextProvider = ({ children }: IThemeContextProvider) => {
+  const [savedTheme, setSavedTheme] = useLocalStorage<Theme>('theme', 'light');
+
+  const handleSetTheme = (newTheme: Theme) => {
+    setSavedTheme(newTheme);
+  };
+
+  const value = useMemo(() => {
+    return {
+      theme: savedTheme,
+      setTheme: handleSetTheme,
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [savedTheme]);
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', savedTheme);
+  }, [savedTheme]);
+
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
+};
