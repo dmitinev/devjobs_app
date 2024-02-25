@@ -20,7 +20,7 @@ const useLocalStorage = <T extends Hooktype | HookArray>(
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
-  }, [value]);
+  }, [key, value]);
 
   return [value, setValue];
 };
