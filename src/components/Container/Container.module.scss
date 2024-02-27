@@ -1,5 +1,10 @@
 .container {
   max-width: 307px;
   margin: 0 auto;
-  padding: 0 10px;
+  @include tablet_display {
+    max-width: 768px;
+  }
+  @include pc_display {
+    max-width: 1110px;
+  }
 }

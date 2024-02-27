@@ -7,7 +7,9 @@ export const MainPage = () => (
   <main className={styles.mainPage}>
     <Container>
       <Header />
-      <SearchForm placeholderTitle="Filter by title..." />
+      <div className={styles.searchBar}>
+        <SearchForm placeholderTitle="Filter by title..." />
+      </div>
     </Container>
   </main>
 );
