@@ -5,6 +5,7 @@ type Theme = 'light' | 'dark';
 
 export interface IThemeContext {
   theme: Theme;
+  // eslint-disable-next-line no-unused-vars
   setTheme: (value: Theme) => void;
 }
 
