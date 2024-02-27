@@ -22,6 +22,9 @@
   grid-template-rows: 1fr;
   align-items: center;
   justify-items: center;
+  @include tablet_display {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
   &__label {
     &__name {
       grid-column: 1 / 2;
@@ -29,6 +32,10 @@
     }
     &__location {
       display: none;
+      grid-column: 2 / 3;
+      @include tablet_display {
+        display: inline-flex;
+      }
     }
   }
 
@@ -37,6 +44,9 @@
     cursor: pointer;
     filter: var(--filter-icon-color);
     justify-self: center;
+    @include tablet_display {
+      display: none;
+    }
     &:hover {
       filter: brightness(0) saturate(100%) invert(37%) sepia(82%) saturate(748%)
         hue-rotate(204deg) brightness(92%) contrast(91%);
@@ -46,6 +56,16 @@
   &__search_btn {
     background-color: var(--violet);
     grid-column: 3 / 4;
+    font-size: 0;
+    line-height: 0;
+    font-weight: 600;
+    @include tablet_display {
+      grid-column: 4 / 5;
+      font-size: inherit;
+      line-height: inherit;
+      width: 80px;
+      height: 48px;
+    }
     border: none;
     outline: none;
     border-radius: 5px;
@@ -54,8 +74,15 @@
     cursor: pointer;
     position: relative;
     justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
     &::after {
       content: '';
+      @include tablet_display {
+        content: none;
+      }
       position: absolute;
       top: 0;
       left: 0;

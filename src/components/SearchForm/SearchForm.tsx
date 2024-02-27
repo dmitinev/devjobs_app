@@ -30,7 +30,9 @@ export const SearchForm = ({
         <SearchInput ref={locationRef} placeholder={placeholderLocation} />
       </label>
       <FilterIcon className={styles.searchForm__icon_filter} />
-      <button type="submit" className={styles.searchForm__search_btn}></button>
+      <button type="submit" className={styles.searchForm__search_btn}>
+        Search
+      </button>
     </form>
   );
 };

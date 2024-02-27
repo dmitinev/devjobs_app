@@ -8,7 +8,10 @@ export const MainPage = () => (
     <Container>
       <Header />
       <div className={styles.searchBar}>
-        <SearchForm placeholderTitle="Filter by title..." />
+        <SearchForm
+          placeholderTitle="Filter by title..."
+          placeholderLocation="Filter by location.."
+        />
       </div>
     </Container>
   </main>
