@@ -1,0 +1,23 @@
+@mixin hover {
+  @media (any-hover: hover) {
+    @content;
+  }
+}
+
+@mixin pc_display {
+  @media (width >= 1440px) {
+    @content;
+  }
+}
+
+@mixin tablet_display {
+  @media (width >= 768px) {
+    @content;
+  }
+}
+
+@mixin mobile_display {
+  @media (width >= 375px) {
+    @content;
+  }
+}

@@ -10,5 +10,12 @@ export default defineConfig({
       'top-level-await': true,
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "./src/_mixins.scss";',
+      },
+    },
+  },
   base: '/devjobs_app/',
 });
