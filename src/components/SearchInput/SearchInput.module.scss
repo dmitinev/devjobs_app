@@ -6,11 +6,11 @@ body[data-theme='light'] {
 }
 
 .searchForm__input {
+  padding: 0;
   border: none;
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: 16px;
-  padding: 20px 0;
   border-radius: 6px 0 0 6px;
   width: 100%;
   &::placeholder {
