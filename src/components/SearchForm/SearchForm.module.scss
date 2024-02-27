@@ -4,15 +4,22 @@
     --text-color: var(--white);
     --filter-icon-color: brightness(0) saturate(100%) invert(100%) sepia(87%)
       saturate(0%) hue-rotate(347deg) brightness(101%) contrast(101%);
+    --checkBox-color: var(--light-gray);
+    --checked-checkbox-color: var(--violet);
+    --placeholder-color: var(--light-gray);
   }
   body[data-theme='light'] {
     --background-color: var(--white);
     --text-color: var(--dark-violet);
     --filter-icon-color: initial;
+    --checkBox-color: var(--dark-violet);
+    --checked-checkbox-color: var(--violet);
+    --placeholder-color: var(--gray);
   }
 }
 
 .searchForm {
+  cursor: inherit;
   min-height: 80px;
   border-radius: 6px;
   background-color: var(--background-color);
@@ -23,16 +30,25 @@
   align-items: center;
   justify-items: center;
   @include tablet_display {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 64px 1fr 64px 1fr 1fr 1fr;
+  }
+  @include pc_display {
+    grid-template-columns: 64px 400px 64px 224px 1fr 1fr;
   }
   &__label {
     &__name {
       grid-column: 1 / 2;
+      width: 100%;
       margin-left: 16px;
+      @include tablet_display {
+        grid-column: 2 / 3;
+        margin-left: 0;
+      }
     }
     &__location {
+      width: 100%;
       display: none;
-      grid-column: 2 / 3;
+      grid-column: 4 / 5;
       @include tablet_display {
         display: inline-flex;
       }
@@ -53,17 +69,81 @@
     }
   }
 
+  &__icon_search {
+    display: none;
+    @include tablet_display {
+      display: inline-flex;
+      grid-column: 1 / 2;
+      cursor: pointer;
+      filter: var(--filter-icon-color);
+      justify-self: center;
+    }
+  }
+
+  &__icon_location {
+    display: none;
+    @include tablet_display {
+      display: inline-flex;
+      grid-column: 3 / 4;
+      cursor: pointer;
+      filter: var(--filter-icon-color);
+      justify-self: center;
+    }
+  }
+
+  &__checkboxLabel {
+    display: none;
+    font-weight: 600;
+    grid-column: 5 / 6;
+    word-wrap: nowrap;
+    @include tablet_display {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__checkbox {
+    display: none;
+    width: 24px;
+    height: 24px;
+    opacity: 0.1;
+    border-radius: 3px;
+    background-color: var(--checkBox-color);
+    border: none;
+    outline: none;
+    margin: 0 16px 0 0;
+    &:checked {
+      opacity: 1;
+      background-image: url('/src/assets/desktop/icon-check.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: var(--checked-checkbox-color);
+    }
+    @include tablet_display {
+      display: inline-flex;
+    }
+  }
+
   &__search_btn {
     background-color: var(--violet);
     grid-column: 3 / 4;
     font-size: 0;
     line-height: 0;
     font-weight: 600;
+    transition: background-color 0.4s;
+    @include hover {
+      &:hover {
+        background-color: var(--light-violet);
+      }
+    }
     @include tablet_display {
-      grid-column: 4 / 5;
+      grid-column: 6 / 7;
       font-size: inherit;
       line-height: inherit;
       width: 80px;
+      height: 48px;
+    }
+    @include pc_display {
+      width: 123px;
       height: 48px;
     }
     border: none;
