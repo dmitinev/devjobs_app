@@ -4,7 +4,11 @@ import { ThemeContextProvider } from '../src/context/themeContext/ThemeContext.t
 import App from './App.tsx';
 import './index.scss';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLDivElement).render(
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLDivElement,
+);
+
+root.render(
   <React.StrictMode>
     <ThemeContextProvider>
       <App />

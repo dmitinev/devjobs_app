@@ -7,6 +7,7 @@
     --checkBox-color: var(--light-gray);
     --checked-checkbox-color: var(--violet);
     --placeholder-color: var(--light-gray);
+    --cell-border-color: #2a3442;
   }
   body[data-theme='light'] {
     --background-color: var(--white);
@@ -15,6 +16,7 @@
     --checkBox-color: var(--dark-violet);
     --checked-checkbox-color: var(--violet);
     --placeholder-color: var(--gray);
+    --cell-border-color: #e2e6ea;
   }
 }
 
@@ -54,7 +56,7 @@
           top: 50%;
           right: 0;
           transform: translateY(-50%);
-          background-color: var(--placeholder-color);
+          background-color: var(--cell-border-color);
           width: 1px;
           height: 100%;
         }
@@ -76,7 +78,7 @@
           top: 50%;
           right: 0;
           transform: translateY(-50%);
-          background-color: var(--placeholder-color);
+          background-color: var(--cell-border-color);
           width: 1px;
           height: 100%;
         }
