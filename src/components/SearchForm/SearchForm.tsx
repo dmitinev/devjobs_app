@@ -19,9 +19,9 @@ export const SearchForm = ({
   placeholderLocation,
 }: ISearchFormProps) => {
   const [isModalMobileShown, setIsModalMobileShown] = useState(false);
-  const nameRef = useRef<HTMLInputElement>(null);
-  const locationRef = useRef<HTMLInputElement>(null);
-  const fullTimeDataRef = useRef<ModalFilterRef>(null);
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const locationRef = useRef<HTMLInputElement | null>(null);
+  const fullTimeDataRef = useRef<ModalFilterRef | null>(null);
   const windowWidth = useWindowDimensions().width;
 
   const handleFilterMobileClick = () => {

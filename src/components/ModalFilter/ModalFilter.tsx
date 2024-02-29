@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import LocationIcon from '../../assets/desktop/icon-location.svg?react';
 import { SearchInput } from '../../components/SearchInput';
 import styles from './ModalFilter.module.scss';
@@ -16,19 +16,28 @@ export interface ModalFilterRef {
 
 export const ModalFilter = forwardRef<ModalFilterRef, ModalFilterProps>(
   ({ isShown, closeHandler }, ref) => {
+    const [inputValue, setInputValue] = useState('');
     const locationRef = useRef<HTMLInputElement | null>(null);
     const checkboxFullTimeRef = useRef<HTMLInputElement | null>(null);
-    useImperativeHandle(ref, () => {
-      return {
-        locationValue: locationRef.current?.value,
-        isFullTimeChecked: checkboxFullTimeRef.current?.checked,
-      };
-    });
+    useImperativeHandle(
+      ref,
+      () => {
+        return {
+          locationValue: locationRef.current?.value,
+          isFullTimeChecked: checkboxFullTimeRef.current?.checked,
+        };
+      },
+      [inputValue],
+    );
 
     const handleModalClose = (e: React.MouseEvent<HTMLDivElement>) => {
       if (e.target === e.currentTarget) {
         closeHandler(e);
       }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
     };
 
     return (
@@ -44,9 +53,11 @@ export const ModalFilter = forwardRef<ModalFilterRef, ModalFilterProps>(
                   <LocationIcon className={styles.modalFilter__icon_location} />
                   <label className={styles.modalFilter__label}>
                     <SearchInput
+                      onChange={handleChange}
                       name="searchInput-data-location"
                       ref={locationRef}
                       placeholder="Filter by location.."
+                      value={inputValue}
                     />
                   </label>
                 </div>
