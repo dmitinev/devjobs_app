@@ -1,11 +1,11 @@
-import { forwardRef } from 'react';
+import { ChangeEventHandler, forwardRef } from 'react';
 import styles from './SearchInput.module.scss';
 
 interface SearchInputProps {
   placeholder?: string;
   name: string;
   value?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(

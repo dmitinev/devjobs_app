@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { MouseEvent, forwardRef, useImperativeHandle, useRef } from 'react';
 import LocationIcon from '../../assets/desktop/icon-location.svg?react';
 import { SearchInput } from '../../components/SearchInput';
 import styles from './ModalFilter.module.scss';
@@ -7,7 +7,7 @@ interface ModalFilterProps {
   isShown: boolean;
   closeHandler: (
     // eslint-disable-next-line no-unused-vars
-    e: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLElement>,
+    e: MouseEvent<HTMLDivElement> | MouseEvent<HTMLElement>,
   ) => void;
 }
 
@@ -28,7 +28,7 @@ export const ModalFilter = forwardRef<ModalFilterRef, ModalFilterProps>(
     });
 
     const handleModalClose = (
-      e: React.MouseEvent<HTMLDivElement> | React.MouseEvent<HTMLElement>,
+      e: MouseEvent<HTMLDivElement> | MouseEvent<HTMLElement>,
     ) => {
       if (e.target === e.currentTarget) {
         closeHandler(e);
