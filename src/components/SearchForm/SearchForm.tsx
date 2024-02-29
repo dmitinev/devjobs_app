@@ -74,6 +74,7 @@ export const SearchForm = ({
         </button>
       </form>
       {windowWidth <= 768 &&
+        isModalMobileShown &&
         createPortal(
           <ModalFilter
             closeHandler={handleModalClose}
