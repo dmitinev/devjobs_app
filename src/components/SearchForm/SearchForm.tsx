@@ -1,12 +1,12 @@
-import { useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
 import LocationIcon from '../../assets/desktop/icon-location.svg?react';
 import SearchIcon from '../../assets/desktop/icon-search.svg?react';
 import FilterIcon from '../../assets/mobile/icon-filter.svg?react';
 import { ModalFilter } from '../../components/ModalFilter';
 import { SearchInput } from '../../components/SearchInput';
+import { SearchDataContext } from '../../context/searchDataContext/SearchDataContext';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
-import { ModalFilterRef } from '../ModalFilter/ModalFilter';
 import styles from './SearchForm.module.scss';
 
 interface ISearchFormProps {
@@ -19,10 +19,15 @@ export const SearchForm = ({
   placeholderLocation,
 }: ISearchFormProps) => {
   const [isModalMobileShown, setIsModalMobileShown] = useState(false);
-  const nameRef = useRef<HTMLInputElement | null>(null);
-  const locationRef = useRef<HTMLInputElement | null>(null);
-  const fullTimeDataRef = useRef<ModalFilterRef | null>(null);
   const windowWidth = useWindowDimensions().width;
+  const {
+    searchDataLocation,
+    handleSearchDatLocation,
+    isFullTime,
+    handleIsFullTime,
+    searchDataName,
+    handleSearchDataName,
+  } = useContext(SearchDataContext);
 
   const handleFilterMobileClick = () => {
     setIsModalMobileShown((prev) => !prev);
@@ -30,6 +35,18 @@ export const SearchForm = ({
 
   const handleModalClose = () => {
     setIsModalMobileShown(false);
+  };
+
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleSearchDataName(e.target.value);
+  };
+
+  const handleChangeLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleSearchDatLocation(e.target.value);
+  };
+
+  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleIsFullTime(e.target.checked);
   };
 
   return (
@@ -41,8 +58,9 @@ export const SearchForm = ({
         >
           <SearchInput
             name="searchInput-data-name"
-            ref={nameRef}
             placeholder={placeholderTitle}
+            value={searchDataName}
+            onChange={handleChangeName}
           />
         </label>
         <LocationIcon className={styles.searchForm__icon_location} />
@@ -53,8 +71,9 @@ export const SearchForm = ({
         >
           <SearchInput
             name="searchInput-data-location"
-            ref={locationRef}
             placeholder={placeholderLocation}
+            value={searchDataLocation}
+            onChange={handleChangeLocation}
           />
         </label>
         <FilterIcon
@@ -66,6 +85,8 @@ export const SearchForm = ({
             type="checkbox"
             className={styles.searchForm__checkbox}
             name="fulltime"
+            checked={isFullTime}
+            onChange={handleCheck}
           />
           {windowWidth > 1440 ? 'Full Time Only' : 'Full Time'}
         </label>
@@ -78,7 +99,6 @@ export const SearchForm = ({
         createPortal(
           <ModalFilter
             closeHandler={handleModalClose}
-            ref={fullTimeDataRef}
             isShown={isModalMobileShown}
           />,
           document.body,
