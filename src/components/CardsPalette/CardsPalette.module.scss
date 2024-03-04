@@ -1,2 +1,45 @@
+.paletteWrapper {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .cardsPalette {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-row-gap: 49px;
+  place-items: center;
+  @include tablet_display {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 11px;
+    grid-row-gap: 65px;
+  }
+  @include pc_display {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+  }
+  &__btnLoad {
+    margin-top: 32px;
+    margin-bottom: 62px;
+    background-color: var(--violet);
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 5px;
+    width: 141px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    transition: background-color 0.4s;
+    @include hover {
+      &:hover {
+        background-color: var(--light-violet);
+      }
+    }
+  }
 }

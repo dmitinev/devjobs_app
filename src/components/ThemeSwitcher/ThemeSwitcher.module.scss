@@ -58,6 +58,13 @@
       bottom: calc(100% + 10px);
       left: 0;
       width: 100%;
+      @include hover {
+        &:hover {
+          &::after {
+            background-color: var(--warm-violet);
+          }
+        }
+      }
       &::after {
         position: absolute;
         top: calc(100% + 15px);

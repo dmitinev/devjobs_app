@@ -20,6 +20,14 @@
   width: 100%;
   background-color: var(--background-color);
   border-radius: 6px;
+  max-width: 327px;
+  padding-bottom: 32px;
+  @include tablet_display {
+    max-width: none;
+  }
+  & span {
+    display: block;
+  }
   &__logoBackground {
     width: 50px;
     height: 50px;
@@ -38,5 +46,18 @@
   &__position {
     font-weight: 600;
     font-size: 20px;
+    margin-top: 16px;
+    margin-bottom: 17px;
+    color: var(--text-color);
+    word-wrap: break-word;
+  }
+  &__company {
+    color: var(--text-secondary-color);
+    margin-bottom: 44px;
+  }
+  &__location {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--violet);
   }
 }
