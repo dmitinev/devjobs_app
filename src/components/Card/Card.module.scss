@@ -1,0 +1,42 @@
+:global {
+  body[data-theme='dark'] {
+    --background-color: var(--dark-violet);
+    --text-color: var(--white);
+    --text-secondary-color: var(--dark-gray);
+  }
+  body[data-theme='light'] {
+    --background-color: var(--white);
+    --text-color: var(--dark-violet);
+    --text-secondary-color: var(--dark-gray);
+  }
+}
+
+.container {
+  max-width: 261px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 100%;
+  background-color: var(--background-color);
+  border-radius: 6px;
+  &__logoBackground {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate3d(0, -50%, 0);
+  }
+  &__vacancyInfo {
+    display: flex;
+    max-width: 147px;
+    justify-content: space-between;
+    color: var(--text-secondary-color);
+  }
+  &__position {
+    font-weight: 600;
+    font-size: 20px;
+  }
+}

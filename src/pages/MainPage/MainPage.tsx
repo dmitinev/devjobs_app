@@ -1,3 +1,4 @@
+import { CardsPalette } from '../../components/CardsPalette';
 import { Container } from '../../components/Container';
 import { Header } from '../../components/Header';
 import { SearchForm } from '../../components/SearchForm';
@@ -22,6 +23,7 @@ export const MainPage = () => {
               placeholderLocation="Filter by location.."
             />
           </div>
+          <CardsPalette />
         </SearchDataContextProvider>
       </Container>
     </main>
