@@ -12,8 +12,8 @@
 }
 
 .container {
-  max-width: 261px;
-  margin: 0 auto;
+  margin: 0 0 0 32px;
+  padding-bottom: 36px;
 }
 
 .card {
@@ -21,7 +21,7 @@
   background-color: var(--background-color);
   border-radius: 6px;
   max-width: 327px;
-  padding-bottom: 32px;
+  max-height: 228px;
   @include tablet_display {
     max-width: none;
   }
@@ -50,6 +50,11 @@
     margin-bottom: 17px;
     color: var(--text-color);
     word-wrap: break-word;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
   }
   &__company {
     color: var(--text-secondary-color);

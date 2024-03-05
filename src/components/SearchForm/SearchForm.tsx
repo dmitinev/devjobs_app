@@ -5,6 +5,7 @@ import SearchIcon from '../../assets/desktop/icon-search.svg?react';
 import FilterIcon from '../../assets/mobile/icon-filter.svg?react';
 import { ModalFilter } from '../../components/ModalFilter';
 import { SearchInput } from '../../components/SearchInput';
+import { ApiDataContext } from '../../context/apiDataContext/ApiDataContext';
 import { SearchDataContext } from '../../context/searchDataContext/SearchDataContext';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import styles from './SearchForm.module.scss';
@@ -29,6 +30,8 @@ export const SearchForm = ({
     handleSearchDataName,
   } = useContext(SearchDataContext);
 
+  const { setFilteredApiData } = useContext(ApiDataContext);
+
   const handleFilterMobileClick = () => {
     setIsModalMobileShown((prev) => !prev);
   };
@@ -49,9 +52,22 @@ export const SearchForm = ({
     handleIsFullTime(e.target.checked);
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFilteredApiData({
+      searchDataName,
+      searchDataLocation,
+      isFullTime,
+    });
+  };
+
   return (
     <>
-      <form className={styles.searchForm} autoComplete="off">
+      <form
+        onSubmit={handleSubmit}
+        className={styles.searchForm}
+        autoComplete="off"
+      >
         <SearchIcon className={styles.searchForm__icon_search} />
         <label
           className={(styles.searchForm__label, styles.searchForm__label__name)}

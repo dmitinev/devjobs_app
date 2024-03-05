@@ -34,6 +34,23 @@ export const ThemeContextProvider = ({ children }: IThemeContextProvider) => {
   }, [savedTheme]);
 
   useEffect(() => {
+    const handleComputerPreferedTheme = () => {
+      const systemScheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
+        ? 'dark'
+        : 'light';
+      setSavedTheme(systemScheme as Theme);
+    };
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', handleComputerPreferedTheme);
+    return () =>
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', handleComputerPreferedTheme);
+  });
+
+  useEffect(() => {
     document.body.setAttribute('data-theme', savedTheme);
   }, [savedTheme]);
 

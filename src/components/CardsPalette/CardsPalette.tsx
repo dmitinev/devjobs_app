@@ -1,83 +1,20 @@
+import { useContext } from 'react';
+import { Card } from '../../components/Card';
+import { ApiDataContext } from '../../context/apiDataContext/ApiDataContext';
 import styles from './CardsPalette.module.scss';
 
 export const CardsPalette = () => {
+  const { filteredApiData } = useContext(ApiDataContext);
   return (
     <section className={styles.paletteWrapper}>
       <section className={styles.cardsPalette}>
-        {/* <Card
-          company="Blogr"
-          location="New York"
-          contract="Full Time"
-          postedAt="1w ago"
-          position="Senior Software Engineer"
-          logo="./assets/logos/blogr.svg"
-          logoBackground="#FF8F00"
-        />
-        <Card
-          company="Spoon"
-          location="United Kingdom"
-          contract="Full Time"
-          postedAt="1d ago"
-          position="Senior Software Engineer"
-          logo="./assets/logos/scoot.svg"
-          logoBackground="#D34848"
-        />
-        <Card
-          company="Spoon"
-          location="United Kingdom"
-          contract="Full Time"
-          postedAt="1d ago"
-          position="Senior Software Engineer"
-          logo="./assets/logos/scoot.svg"
-          logoBackground="#D34848"
-        />
-        <Card
-          company="Spoon"
-          location="United Kingdom"
-          contract="Full Time"
-          postedAt="1d ago"
-          position="Senior Software Engineer"
-          logo="./assets/logos/scoot.svg"
-          logoBackground="#D34848"
-        />
-        <Card
-          company="Blogr"
-          location="New York"
-          contract="Full Time"
-          postedAt="1w ago"
-          position="Senior Software Engineer"
-          logo="./assets/logos/blogr.svg"
-          logoBackground="#FF8F00"
-        />
-        <Card
-          company="Spoon"
-          location="United Kingdom"
-          contract="Full Time"
-          postedAt="1d ago"
-          position="Senior Software Engineer"
-          logo="./assets/logos/scoot.svg"
-          logoBackground="#D34848"
-        />
-        <Card
-          company="Spoon"
-          location="United Kingdom"
-          contract="Full Time"
-          postedAt="1d ago"
-          position="Senior Software Engineer"
-          logo="./assets/logos/scoot.svg"
-          logoBackground="#D34848"
-        />
-        <Card
-          company="Spoon"
-          location="United Kingdom"
-          contract="Full Time"
-          postedAt="1d ago"
-          position="Senior Software Engineer"
-          logo="./assets/logos/scoot.svg"
-          logoBackground="#D34848"
-        /> */}
+        {filteredApiData.map((vacancy) => {
+          return <Card key={vacancy.id} {...vacancy} />;
+        })}
       </section>
-      <button className={styles.cardsPalette__btnLoad}>Load More</button>
+      {!!filteredApiData.length && (
+        <button className={styles.cardsPalette__btnLoad}>Load More</button>
+      )}
     </section>
   );
 };

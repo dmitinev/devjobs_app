@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useMemo, useState } from 'react';
 
-interface SearchDataContext {
+export interface ISearchDataContext {
   searchDataName: string;
   searchDataLocation: string;
   isFullTime: boolean;
@@ -13,7 +13,7 @@ interface SearchDataContextProviderProps {
   children: ReactNode;
 }
 
-export const SearchDataContext = createContext<SearchDataContext>({
+export const SearchDataContext = createContext<ISearchDataContext>({
   searchDataName: '',
   searchDataLocation: '',
   isFullTime: false,
@@ -31,7 +31,7 @@ const SearchDataContextProvider = ({
     isFullTime: false,
   });
 
-  const valueToPass: SearchDataContext = useMemo(() => {
+  const valueToPass: ISearchDataContext = useMemo(() => {
     return {
       searchDataName: searchData.searchDataName,
       searchDataLocation: searchData.searchDataLocation,
