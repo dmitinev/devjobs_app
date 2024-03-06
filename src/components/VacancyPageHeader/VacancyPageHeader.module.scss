@@ -1,0 +1,50 @@
+:global {
+  body[data-theme='dark'] {
+    --background-color: var(--dark-violet);
+    --text-color: var(--white);
+  }
+  body[data-theme='light'] {
+    --background-color: var(--white);
+    --text-color: var(--dark-violet);
+  }
+}
+
+.vacancyPageHeader {
+  background-color: var(--background-color);
+  border-radius: 6px;
+  height: 205px;
+  transform: translateY(-24px);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 49px 1fr 1fr;
+  justify-items: center;
+  &__logo {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    border-radius: 15px;
+    grid-row: 1/2;
+  }
+  &__companyInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-row: 2/3;
+    align-self: baseline;
+    &__name {
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 20px;
+    }
+    &__webSite {
+      color: var(--dark-gray);
+    }
+    & span {
+      display: block;
+    }
+  }
+}
