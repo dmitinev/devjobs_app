@@ -4,4 +4,7 @@
   min-height: 136px;
   position: relative;
   padding-top: 32px;
+  &__link {
+    max-height: 32px;
+  }
 }
