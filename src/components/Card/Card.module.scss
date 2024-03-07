@@ -3,11 +3,13 @@
     --background-color: var(--dark-violet);
     --text-color: var(--white);
     --text-secondary-color: var(--dark-gray);
+    --position-color: var(--white);
   }
   body[data-theme='light'] {
     --background-color: var(--white);
     --text-color: var(--dark-violet);
     --text-secondary-color: var(--dark-gray);
+    --position-color: #000;
   }
 }
 
@@ -48,7 +50,7 @@
     font-size: 20px;
     margin-top: 16px;
     margin-bottom: 17px;
-    color: var(--text-color);
+    color: var(--position-color);
     word-wrap: break-word;
     font-stretch: normal;
     font-style: normal;

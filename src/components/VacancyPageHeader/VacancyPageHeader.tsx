@@ -26,7 +26,12 @@ export const VacancyPageHeader = ({ pageId }: VacancyPageHeaderProps) => {
           {vacancy?.website}
         </span>
       </div>
-      <a href={vacancy?.website} target="__blank">
+      <a
+        className={styles.vacancyPageHeader__websiteBtn}
+        href={vacancy?.website}
+        target="__blank"
+        rel="noreferrer noopener"
+      >
         Company Site
       </a>
     </section>

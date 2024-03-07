@@ -1,6 +1,9 @@
 .vacancyPage {
   height: 100dvh;
   position: relative;
+  &__infoWrapper {
+    margin-top: 0;
+  }
   &::before {
     content: '';
     position: absolute;

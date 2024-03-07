@@ -2,10 +2,14 @@
   body[data-theme='dark'] {
     --background-color: var(--dark-violet);
     --text-color: var(--white);
+    --btn-color: rgba(89, 100, 224, 0.1);
+    --btn-hover-color: rgba(83, 88, 98, 0.25);
   }
   body[data-theme='light'] {
     --background-color: var(--white);
     --text-color: var(--dark-violet);
+    --btn-color: #eff0fc;
+    --btn-hover-color: rgba(89, 100, 224, 0.35);
   }
 }
 
@@ -18,6 +22,38 @@
   grid-template-columns: 1fr;
   grid-template-rows: 49px 1fr 1fr;
   justify-items: center;
+  max-width: 730px;
+  margin: 0 auto;
+  @include tablet_display {
+    grid-template-columns: 140px 1fr 195px;
+    grid-template-rows: 1fr;
+    transform: translateY(-42px);
+    height: 140px;
+    align-items: center;
+  }
+  &__websiteBtn {
+    background-color: var(--btn-color);
+    color: var(--violet);
+    opacity: var(--btn-opacity);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 147px;
+    height: 48px;
+    transition: background-color 0.4s;
+    @include hover {
+      &:hover {
+        background-color: var(--btn-hover-color);
+      }
+    }
+    @include tablet_display {
+      grid-column: 3/4;
+      grid-row: 1;
+      justify-self: left;
+    }
+  }
   &__logo {
     width: 50px;
     height: 50px;
@@ -27,6 +63,18 @@
     transform: translateY(-50%);
     border-radius: 15px;
     grid-row: 1/2;
+    @include tablet_display {
+      grid-column: 1/2;
+      transform: translateY(0);
+      grid-row: 1;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      & img {
+        width: 50%;
+        height: auto;
+      }
+    }
   }
   &__companyInfo {
     display: flex;
@@ -35,6 +83,13 @@
     align-items: center;
     grid-row: 2/3;
     align-self: baseline;
+    @include tablet_display {
+      grid-column: 2/3;
+      grid-row: 1;
+      align-self: center;
+      justify-self: left;
+      margin-left: 40px;
+    }
     &__name {
       color: var(--text-color);
       font-weight: 600;

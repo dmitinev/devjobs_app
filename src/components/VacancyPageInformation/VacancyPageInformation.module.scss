@@ -1,0 +1,169 @@
+:global {
+  body[data-theme='dark'] {
+    --background-color: var(--dark-violet);
+    --text-color: #9daec2;
+    --heading-color: var(--white);
+  }
+  body[data-theme='light'] {
+    --background-color: var(--white);
+    --text-color: #6e8098;
+    --heading-color: #000;
+  }
+}
+
+.container {
+  max-width: 279px;
+  margin: 0 auto;
+  @include tablet_display {
+    max-width: 639px;
+  }
+}
+
+.vacancyPageInformation {
+  max-width: 730px;
+  margin: 0 auto;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  &__mainInfo {
+    display: grid;
+    grid-auto-flow: row;
+    @include tablet_display {
+      grid-auto-flow: column;
+      grid-template-columns: 1fr 141px;
+      grid-template-rows: auto;
+    }
+  }
+  &__mainInfoWrapper {
+    max-width: 50%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 8px;
+    @include tablet_display {
+      max-width: 152px;
+      grid-column: 1/2;
+      align-self: start;
+      margin-top: 48px;
+      margin-bottom: 0;
+    }
+    &__postedAt {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -12px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: var(--text-color);
+        transform: translateY(-50%);
+      }
+    }
+  }
+  &__position {
+    font-weight: bold;
+    color: var(--heading-color);
+    font-size: 20px;
+    margin-bottom: 12px;
+    @include tablet_display {
+      grid-column: 1/2;
+      align-self: center;
+      margin-bottom: 0;
+    }
+  }
+  &__location {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--violet);
+    margin-bottom: 54px;
+    @include tablet_display {
+      grid-column: 1/2;
+      margin-bottom: 0;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    background-color: var(--violet);
+    border-radius: 5px;
+    height: 48px;
+    transition: background-color, 0.4s;
+    @include tablet_display {
+      grid-column: 2/3;
+      align-self: center;
+      grid-row: 2;
+    }
+    @include hover {
+      &:hover {
+        background-color: rgba(147, 155, 244, 0.35);
+      }
+    }
+  }
+  &__description {
+    font-size: 16px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__text {
+      margin-bottom: 40px;
+    }
+    &__requirements {
+      font-weight: 600;
+      color: var(--heading-color);
+      margin-bottom: 28px;
+    }
+    &__requirementsDescription {
+      margin-bottom: 32px;
+    }
+    &__requirementsList {
+      list-style-type: disc;
+      max-width: 242px;
+      align-self: end;
+      margin-bottom: 40px;
+      @include tablet_display {
+        max-width: 95%;
+        align-self: center;
+      }
+      & li {
+        &::marker {
+          color: var(--violet);
+        }
+        &:not(:last-child) {
+          margin-bottom: 8px;
+        }
+      }
+    }
+    &__responsibilities {
+      font-weight: 600;
+      color: var(--heading-color);
+      margin-bottom: 28px;
+    }
+    &__responsibilitiesDescription {
+      margin-bottom: 32px;
+    }
+    &__responsibilitiesList {
+      list-style-type: decimal;
+      max-width: 242px;
+      align-self: end;
+      margin-bottom: 40px;
+      @include tablet_display {
+        max-width: 95%;
+        align-self: center;
+      }
+      & li {
+        &::marker {
+          color: var(--violet);
+          font-weight: 600;
+        }
+        &:not(:last-child) {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
