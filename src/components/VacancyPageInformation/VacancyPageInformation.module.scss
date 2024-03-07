@@ -106,6 +106,9 @@
   &__description {
     font-size: 16px;
     margin-top: 32px;
+    @include tablet_display {
+      margin-top: 40px;
+    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,6 +119,7 @@
       font-weight: 600;
       color: var(--heading-color);
       margin-bottom: 28px;
+      font-size: 20px;
     }
     &__requirementsDescription {
       margin-bottom: 32px;
@@ -142,6 +146,7 @@
       font-weight: 600;
       color: var(--heading-color);
       margin-bottom: 28px;
+      font-size: 20px;
     }
     &__responsibilitiesDescription {
       margin-bottom: 32px;
