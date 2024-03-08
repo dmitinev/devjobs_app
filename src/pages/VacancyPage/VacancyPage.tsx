@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Container } from '../../components/Container';
+import { DetailsFooter } from '../../components/DetailsFooter';
 import { Header } from '../../components/Header';
 import { VacancyPageHeader } from '../../components/VacancyPageHeader';
 import { VacancyPageInformation } from '../../components/VacancyPageInformation';
@@ -17,6 +18,11 @@ export const VacancyPage = () => {
           <VacancyPageInformation pageId={Number(id)} />
         </ApiDataContextProvider>
       </Container>
+      <div className={styles.footerWrapper}>
+        <ApiDataContextProvider>
+          <DetailsFooter pageId={Number(id)} />
+        </ApiDataContextProvider>
+      </div>
     </section>
   );
 };
