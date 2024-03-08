@@ -10,15 +10,7 @@ import { SearchDataContext } from '../../context/searchDataContext/SearchDataCon
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import styles from './SearchForm.module.scss';
 
-interface ISearchFormProps {
-  placeholderTitle?: string;
-  placeholderLocation?: string;
-}
-
-export const SearchForm = ({
-  placeholderTitle,
-  placeholderLocation,
-}: ISearchFormProps) => {
+export const SearchForm = () => {
   const [isModalMobileShown, setIsModalMobileShown] = useState(false);
   const windowWidth = useWindowDimensions().width;
   const {
@@ -74,7 +66,11 @@ export const SearchForm = ({
         >
           <SearchInput
             name="searchInput-data-name"
-            placeholder={placeholderTitle}
+            placeholder={
+              windowWidth > 1440
+                ? 'Filter by title, companies, expertise..'
+                : 'Filter by title..'
+            }
             value={searchDataName}
             onChange={handleChangeName}
           />
@@ -87,7 +83,7 @@ export const SearchForm = ({
         >
           <SearchInput
             name="searchInput-data-location"
-            placeholder={placeholderLocation}
+            placeholder="Filter by location.."
             value={searchDataLocation}
             onChange={handleChangeLocation}
           />
