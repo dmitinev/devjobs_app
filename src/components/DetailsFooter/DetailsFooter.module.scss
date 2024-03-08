@@ -1,27 +1,63 @@
 :global {
   body[data-theme='dark'] {
-    --background-color: var(--dark-violet);
-    --text-color: var(--white);
-    --btn-color: rgba(89, 100, 224, 0.1);
-    --btn-hover-color: rgba(83, 88, 98, 0.25);
+    --background-color: var(--white);
+    --text: var(--white);
+    --main: #9daec2;
   }
   body[data-theme='light'] {
     --background-color: var(--white);
-    --text-color: var(--dark-violet);
-    --btn-color: #eff0fc;
-    --btn-hover-color: rgba(89, 100, 224, 0.35);
+    --text: #000;
+    --main: #6e8098;
   }
 }
 
 .footerContainer {
   max-width: 307px;
   margin: 0 auto;
+  width: 100%;
+  grid-template-columns: 1fr;
+  display: grid;
   @include tablet_display {
     max-width: 730px;
+    grid-template-columns: 1fr 141px;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 12px;
   }
 }
 
 .detailsFooter {
   min-height: 96px;
   background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  &__position {
+    display: none;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 20px;
+    @include tablet_display {
+      display: inline-flex;
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+  }
+  &__company {
+    display: none;
+    color: var(--main);
+    font-size: 16px;
+    @include tablet_display {
+      display: inline-flex;
+      grid-column: 1/2;
+      grid-row: 2/3;
+    }
+  }
+  &__link {
+    width: 100%;
+    align-self: center;
+    @include tablet_display {
+      grid-column: 2/3;
+      align-self: start;
+      grid-row: 1/3;
+    }
+  }
 }
