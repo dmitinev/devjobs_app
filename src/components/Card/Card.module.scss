@@ -23,7 +23,6 @@
   background-color: var(--background-color);
   border-radius: 6px;
   max-width: 327px;
-  max-height: 228px;
   @include tablet_display {
     max-width: none;
   }
