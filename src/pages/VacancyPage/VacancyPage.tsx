@@ -1,10 +1,10 @@
 import { useContext, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { JobVacancy } from 'types';
 import { Container } from '../../components/Container';
 import { DetailsFooter } from '../../components/DetailsFooter';
 import { Header } from '../../components/Header';
 import { Loader } from '../../components/Loader';
+import { NotFoundPage } from '../../components/NotFoundPage';
 import { VacancyPageHeader } from '../../components/VacancyPageHeader';
 import { VacancyPageInformation } from '../../components/VacancyPageInformation';
 import {
@@ -22,10 +22,12 @@ export const VacancyPage = () => {
   const { originalApiData, isLoading } = useContext(ApiDataContext);
 
   const vacancy = useMemo(() => {
-    return originalApiData.find(
-      (vacancy) => vacancy.id === Number(id),
-    ) as JobVacancy;
+    return originalApiData.find((vacancy) => vacancy.id === Number(id));
   }, [originalApiData, id]);
+
+  if (!vacancy) {
+    return <NotFoundPage />;
+  }
 
   return (
     <section className={styles.vacancyPage}>
