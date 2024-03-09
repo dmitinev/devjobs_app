@@ -3,6 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import { NotFoundPage } from '../../components/NotFoundPage';
 import { ApiDataContextProvider } from '../../context/apiDataContext/ApiDataContext';
 import { MainPage } from '../../pages/MainPage';
 import { VacancyPage } from '../../pages/VacancyPage';
@@ -18,5 +19,6 @@ export const AppRouter = createBrowserRouter(
         </ApiDataContextProvider>
       }
     />,
+    <Route path="*" element={<NotFoundPage />} />,
   ]),
 );
