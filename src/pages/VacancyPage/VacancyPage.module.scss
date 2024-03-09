@@ -4,6 +4,12 @@
   &__infoWrapper {
     margin-top: 0;
   }
+  &__loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   &::before {
     content: '';
     position: absolute;

@@ -1,20 +1,16 @@
-import { useContext } from 'react';
-import { ApiDataContext } from '../../context/apiDataContext/ApiDataContext';
 import styles from './FooterLink.module.scss';
 
 interface FooterLinkProps {
-  pageId: number;
+  url: string;
 }
 
-export const FooterLink = ({ pageId }: FooterLinkProps) => {
-  const { originalApiData } = useContext(ApiDataContext);
-  const vacancy = originalApiData.find((vacancy) => vacancy.id === pageId);
+export const FooterLink = ({ url }: FooterLinkProps) => {
   return (
     <a
       className={styles.footerLink}
       target="_blank"
       rel="noreferrer noopener"
-      href={vacancy?.apply}
+      href={url}
     >
       Apply Now
     </a>

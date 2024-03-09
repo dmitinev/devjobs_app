@@ -1,5 +1,11 @@
 .paletteWrapper {
-  margin-top: 80px;
+  margin-top: 32px;
+  @include tablet_display {
+    margin-top: 45px;
+  }
+  @include pc_display {
+    margin-top: 80px;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +23,12 @@
   grid-template-columns: 1fr;
   grid-row-gap: 49px;
   place-items: center;
+  &__loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   @include tablet_display {
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 11px;

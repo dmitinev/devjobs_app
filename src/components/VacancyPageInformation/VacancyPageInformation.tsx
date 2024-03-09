@@ -1,17 +1,13 @@
-import { useContext } from 'react';
-import { ApiDataContext } from '../../context/apiDataContext/ApiDataContext';
+import { JobVacancy } from 'types';
 import styles from './VacancyPageInformation.module.scss';
 
 interface VacancyPageInformationProps {
-  pageId: number;
+  vacancy: JobVacancy;
 }
 
 export const VacancyPageInformation = ({
-  pageId,
+  vacancy,
 }: VacancyPageInformationProps) => {
-  const { originalApiData } = useContext(ApiDataContext);
-  const vacancy = originalApiData.find((vacancy) => vacancy.id === pageId);
-
   return (
     <section className={styles.vacancyPageInformation}>
       <div className={styles.container}>

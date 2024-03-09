@@ -1,15 +1,12 @@
-import { useContext } from 'react';
+import { JobVacancy } from 'types';
 import { FooterLink } from '../../components/FooterLink';
-import { ApiDataContext } from '../../context/apiDataContext/ApiDataContext';
 import styles from './DetailsFooter.module.scss';
 
 interface DetailsFooterProps {
-  pageId: number;
+  vacancy: JobVacancy;
 }
 
-export const DetailsFooter = ({ pageId }: DetailsFooterProps) => {
-  const { originalApiData } = useContext(ApiDataContext);
-  const vacancy = originalApiData.find((vacancy) => vacancy.id === pageId);
+export const DetailsFooter = ({ vacancy }: DetailsFooterProps) => {
   return (
     <footer className={styles.detailsFooter}>
       <div className={styles.footerContainer}>
@@ -18,7 +15,7 @@ export const DetailsFooter = ({ pageId }: DetailsFooterProps) => {
           {vacancy?.company}
         </span>
         <div className={styles.detailsFooter__link}>
-          <FooterLink pageId={pageId} />
+          <FooterLink url={vacancy?.apply} />
         </div>
       </div>
     </footer>

@@ -1,15 +1,11 @@
-import { useContext } from 'react';
-import { ApiDataContext } from '../../context/apiDataContext/ApiDataContext';
+import { JobVacancy } from 'types';
 import styles from './VacancyPageHeader.module.scss';
 
 interface VacancyPageHeaderProps {
-  pageId: number;
+  vacancy: JobVacancy;
 }
 
-export const VacancyPageHeader = ({ pageId }: VacancyPageHeaderProps) => {
-  const { originalApiData } = useContext(ApiDataContext);
-
-  const vacancy = originalApiData.find((vacancy) => vacancy.id === pageId);
+export const VacancyPageHeader = ({ vacancy }: VacancyPageHeaderProps) => {
   return (
     <section className={styles.vacancyPageHeader}>
       <div

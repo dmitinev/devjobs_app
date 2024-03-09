@@ -1,21 +1,19 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from '../../components/Card';
-import { ErrorPage } from '../../components/ErrorPage';
 import { Loader } from '../../components/Loader';
 import { ApiDataContext } from '../../context/apiDataContext/ApiDataContext';
 import styles from './CardsPalette.module.scss';
 
 export const CardsPalette = () => {
-  const { filteredApiData, isLoading, errorPresent } =
-    useContext(ApiDataContext);
+  const { filteredApiData, isLoading } = useContext(ApiDataContext);
 
   if (isLoading) {
-    return <Loader />;
-  }
-
-  if (errorPresent) {
-    return <ErrorPage />;
+    return (
+      <div className={styles.cardsPalette__loader}>
+        <Loader />
+      </div>
+    );
   }
 
   return (
